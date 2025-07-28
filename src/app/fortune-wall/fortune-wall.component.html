@@ -1,0 +1,32 @@
+<div class="stars-container" #starsContainer></div>
+<div class="floating-particles" #particlesContainer></div>
+
+<div class="wish-wall">
+  <div class="wall-header">
+    <h1 class="wall-title"> The Cosmic Fortune Teller </h1>
+    <p class="wall-subtitle">Send a gift • Receive your fortune • Written in the stars</p>
+  </div>
+  
+  <div class="wishes-container">
+    <div class="wishes-scroll">
+  @for (fortune of fortuneService.fortunes; track fortune.id) {
+    <div class="wish-item">
+      <div class="wish-icon"></div>
+      <div class="wish-text">
+        <span class="wish-name">{{fortune.name}}</span>: "{{fortune.fortune}}"
+      </div>
+    </div>
+  }
+</div>
+  </div>
+</div>
+
+<div class="new-wish-notification" [class.show]="notificationVisible">
+   New fortune revealed!
+</div>
+
+<div class="controls">
+  <button class="control-btn" (click)="fortuneService.clearFortunes()">
+    🧹 Clear
+  </button>
+</div>
